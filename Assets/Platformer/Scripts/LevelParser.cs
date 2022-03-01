@@ -10,6 +10,8 @@ public class LevelParser : MonoBehaviour
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
     public GameObject coinPrefab;
+    public GameObject flagPrefab;
+    public GameObject waterPrefab;
     public Transform environmentRoot;
 
     // --------------------------------------------------------------------------
@@ -76,10 +78,19 @@ public class LevelParser : MonoBehaviour
                 {
                     var testObject = Instantiate(stonePrefab);
                     testObject.transform.position = new Vector3(column + 0.5f, row + 0.5f, 0f);
-                }
-                else if (letter == 'c')
+                } else if (letter == 'c')
                 {
                     var testObject = Instantiate(coinPrefab);
+                    testObject.transform.position = new Vector3(column + 0.5f, row + 0.5f, 0.2f);
+                } else if (letter == 'f')
+                {
+                    var testObject = Instantiate(flagPrefab);
+                    testObject.transform.position = new Vector3(column + 0.24f, row + 5.47f, 0.2f);
+                    var testObject2 = Instantiate(stonePrefab);
+                    testObject2.transform.position = new Vector3(column + 0.5f, row + 0.5f, 0f);
+                } else if (letter == 'w')
+                {
+                    var testObject = Instantiate(waterPrefab);
                     testObject.transform.position = new Vector3(column + 0.5f, row + 0.5f, 0.2f);
                 }
 

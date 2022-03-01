@@ -7,6 +7,8 @@ TagManager:
   - Brick
   - Coin
   - Question Block
+  - Flag
+  - Water
   layers:
   - Default
   - TransparentFX

@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+
+    private Rigidbody rb;
+    private Collider col;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        col = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -35,10 +40,28 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Coin"))
+        /*if (collision.gameObject.CompareTag("Coin"))
         {
             FindObjectOfType<ui>().gotCoin();
             Destroy(collision.gameObject);
+        }*/
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            FindObjectOfType<ui>().gotCoin();
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Flag"))
+        {
+            Debug.Log("---Level Complete!---");
+        }
+        if (other.gameObject.CompareTag("Water"))
+        {
+            Debug.Log("Minus points for touching water");
+            FindObjectOfType<ui>().addToScore(-100);
         }
     }
 }

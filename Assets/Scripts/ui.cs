@@ -10,7 +10,7 @@ public class ui : MonoBehaviour
 
     private int coins = 0;
     private int score = 0;
-    private int startingTime = 300;
+    private int startingTime = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class ui : MonoBehaviour
         float timeLeft = (startingTime - Mathf.Floor(Time.timeSinceLevelLoad));
         if (timeLeft <= 0)
         {
-            Debug.Log("OUT OF TIME");
+            Debug.Log("---GAME OVER---");
             return;
         }
         timeText.GetComponent<TMPro.TextMeshProUGUI>().text = "Time: " + timeLeft;
@@ -44,7 +44,7 @@ public class ui : MonoBehaviour
     public void gotCoin()
     {
         coins++;
-        addToScore(300);
+        addToScore(100);
         coinText.GetComponent<TMPro.TextMeshProUGUI>().text = "Coins: " + coins;
     }
 }
